@@ -1,4 +1,4 @@
-Superdesk Core Changelog
+kolDocta Core Changelog
 ==========================
 
 Version 0.0.1

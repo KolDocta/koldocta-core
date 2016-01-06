@@ -1,0 +1,8 @@
+-r requirements.txt
+flake8
+httmock
+pep8
+pyflakes
+nose
+mccabe
+mock

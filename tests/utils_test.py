@@ -1,6 +1,6 @@
 
 import unittest
-from superdesk.utils import sha
+from koldocta.utils import sha
 
 
 class UtilsTestCase(unittest.TestCase):

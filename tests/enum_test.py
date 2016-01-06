@@ -6,13 +6,13 @@
 #
 # For the full copyright and license information, please see the
 # AUTHORS and LICENSE files distributed with this source code, or
-# at https://www.sourcefabric.org/superdesk/license
+# at https://www.sourcefabric.org/koldocta/license
 
-from superdesk.tests import TestCase
-from superdesk.utils import SuperdeskBaseEnum
+from koldocta.tests import TestCase
+from koldocta.utils import KoldoctaBaseEnum
 
 
-class EnumToTest(SuperdeskBaseEnum):
+class EnumToTest(KoldoctaBaseEnum):
     red = 1
     blue = 2
     green = 3

@@ -6,10 +6,10 @@
 #
 # For the full copyright and license information, please see the
 # AUTHORS and LICENSE files distributed with this source code, or
-# at https://www.sourcefabric.org/superdesk/license
+# at https://www.sourcefabric.org/koldocta/license
 
-from superdesk.tests import TestCase
-from superdesk.celery_app import try_cast, loads
+from koldocta.tests import TestCase
+from koldocta.celery_app import try_cast, loads
 from bson import ObjectId
 from datetime import datetime
 from eve.utils import date_to_str

@@ -1,13 +1,13 @@
 
 import time
-from superdesk.tests import TestCase
-from superdesk.storage.amazon.amazon_media_storage import AmazonMediaStorage
+from koldocta.tests import TestCase
+from koldocta.storage.amazon.amazon_media_storage import AmazonMediaStorage
 
 
 class AmazonMediaStorageTestCase(TestCase):
 
     def setUp(self):
-        super().setUp()
+        super(AmazonMediaStorageTestCase, self).setUp()
         self.app.config['AMAZON_CONTAINER_NAME'] = 'AMAZON_CONTAINER_NAME'
         self.app.config['AMAZON_S3_USE_HTTPS'] = True
         self.app.config['AMAZON_SERVE_DIRECT_LINKS'] = True

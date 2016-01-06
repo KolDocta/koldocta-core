@@ -6,12 +6,12 @@
 #
 # For the full copyright and license information, please see the
 # AUTHORS and LICENSE files distributed with this source code, or
-# at https://www.sourcefabric.org/superdesk/license
+# at https://www.sourcefabric.org/koldocta/license
 
 
 from datetime import datetime, timedelta
-from superdesk.tests import TestCase
-from superdesk.utc import get_date, utcnow, get_expiry_date
+from koldocta.tests import TestCase
+from koldocta.utc import get_date, utcnow, get_expiry_date
 from pytz import utc, timezone # flake8: noqa
 from nose.tools import assert_raises
 

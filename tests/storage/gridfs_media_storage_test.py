@@ -3,10 +3,8 @@ import io
 import bson
 import flask
 import unittest
-from unittest.mock import Mock
-from superdesk.upload import bp
-from superdesk.datalayer import SuperdeskDataLayer
-from superdesk.storage.desk_media_storage import SuperdeskGridFSMediaStorage
+from koldocta.upload import bp
+from koldocta.storage.desk_media_storage import KoldoctaGridFSMediaStorage
 
 
 class GridFSMediaStorageTestCase(unittest.TestCase):
@@ -15,8 +13,7 @@ class GridFSMediaStorageTestCase(unittest.TestCase):
         self.app = flask.Flask(__name__)
         self.app.config['SERVER_NAME'] = 'localhost'
         self.app.config['DOMAIN'] = {'upload': {}}
-        self.app.data = SuperdeskDataLayer(self.app)
-        self.media = SuperdeskGridFSMediaStorage(self.app)
+        self.media = KoldoctaGridFSMediaStorage(self.app)
         self.app.register_blueprint(bp)
 
     def test_media_id(self):

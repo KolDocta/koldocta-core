@@ -7,7 +7,7 @@
 #
 # For the full copyright and license information, please see the
 # AUTHORS and LICENSE files distributed with this source code, or
-# at https://www.sourcefabric.org/superdesk/license
+# at https://www.sourcefabric.org/koldocta/license
 
 
 from setuptools import setup, find_packages
@@ -15,21 +15,23 @@ from pip.req import parse_requirements
 from pip.download import PipSession
 
 
-LONG_DESCRIPTION = open('README.md').read()
+LONG_DESCRIPTION = open('README.rst').read()
 REQUIREMENTS = [str(ir.req) for ir in parse_requirements('requirements.txt', session=PipSession())
                 if not (getattr(ir, 'link', False) or getattr(ir, 'url', False))]
 
 setup(
-    name='Superdesk-Core',
+    name='Koldocta-Core',
     version='0.0.1-dev',
-    description='Superdesk Core library',
+    description='Koldocta Core library',
     long_description=LONG_DESCRIPTION,
-    author='petr jasek',
-    author_email='petr.jasek@sourcefabric.org',
-    url='https://github.com/superdesk/superdesk-core',
+    author='Salton Massally',
+    author_email='salton.massally@gmail.com',
+    url='https://github.com/koldocta/koldocta-core',
     license='GPLv3',
     platforms=['any'],
     packages=find_packages(exclude=['tests']),
+    test_suite='nose.collector',
+    tests_require=['nose', 'httmock', 'mock'],
     install_requires=REQUIREMENTS,
     classifiers=[
         'Development Status :: 4 - Beta',
