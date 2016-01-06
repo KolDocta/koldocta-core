@@ -6,7 +6,6 @@ env:
     - TARGET=unit
 
 python:
-    - "2.6"
     - "2.7"
 
 services:
@@ -25,7 +24,7 @@ install:
 script:
     - if [ "${TARGET}" = "unit" ]; then
         flake8;
-        nosetests --with-coverage --cover-package=superdesk ;
+        nosetests --with-coverage --cover-package=koldocta;
       fi
 
 after_script:
