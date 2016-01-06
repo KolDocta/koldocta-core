@@ -31,3 +31,27 @@ include/
 /server/.pydevproject
 /server/.settings/org.eclipse.core.resources.prefs
 /results/
+
+*.py[co]
+
+# env
+/env
+/bin
+/lib
+/include
+/build
+/dist
+
+# tests
+/man
+
+.ropeproject
+# setup
+*.egg-info
+*.egg
+*.swp
+.idea
+
+.settings
+/settings
+
