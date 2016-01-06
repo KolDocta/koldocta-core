@@ -16,7 +16,8 @@ from eve.utils import config
 
 log = logging.getLogger(__name__)
 
-_METHODS = ['GET', 'HEAD', 'POST', 'PATCH', 'PUT', 'DELETE' ]
+_METHODS = ['GET', 'HEAD', 'POST', 'PATCH', 'PUT', 'DELETE']
+
 
 def build_custom_hateoas(hateoas, doc, **values):
     values.update(doc)
@@ -130,7 +131,7 @@ class Resource():
         on_deleted_event = getattr(app, 'on_deleted_item_%s' % self.endpoint_name)
         on_deleted_event -= service.on_deleted
         on_deleted_event += service.on_deleted
-        
+
         # hook in our pre and post processors
         for phase in ('pre', 'post'):
             for method in _METHODS:
@@ -150,39 +151,39 @@ class Resource():
             'nullable': nullable,
             'data_relation': {'resource': resource, 'field': '_id', 'embeddable': embeddable}
         }
-    
+
     def pre_GET(self, resource, request, lookup):
         pass
-    
+
     def pre_HEAD(self, resource, request, lookup):
         pass
-    
+
     def pre_POST(self, resource, request):
         pass
-    
+
     def pre_PATCH(self, resource, request, lookup):
         pass
-    
+
     def pre_PUT(self, resource, request, lookup):
         pass
-    
+
     def pre_DELETE(self, resource, request, lookup):
         pass
-    
+
     def post_GET(self, resource, request, payload):
         pass
-    
+
     def post_HEAD(self, resource, request, payload):
         pass
-    
+
     def post_POST(self, resource, request, payload):
         pass
-        
+
     def post_PATCH(self, resource, request, payload):
         pass
-        
+
     def post_PUT(self, resource, request, payload):
         pass
-        
+
     def post_DELETE(self, resource, request, payload):
         pass

@@ -9,11 +9,9 @@
 # at https://www.sourcefabric.org/koldocta/license
 
 from koldocta.tests import TestCase
-from mock import Mock, mock
 
 
-
-#TODO test validators
+# TODO test validators
 class KoldoctaValidatorTest(TestCase):
     """Base class for the KoldoctaValidator class tests."""
 

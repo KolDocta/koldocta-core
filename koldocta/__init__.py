@@ -8,9 +8,7 @@
 # AUTHORS and LICENSE files distributed with this source code, or
 # at https://www.sourcefabric.org/superdesk/license
 
-"""Superdesk"""
-
-import blinker
+"""Koldocta"""
 
 from flask import abort, json, Blueprint, current_app as app  # noqa
 from flask.ext.script import Command as BaseCommand, Option  # noqa @UnresolvedImport

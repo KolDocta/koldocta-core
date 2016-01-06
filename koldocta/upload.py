@@ -11,7 +11,6 @@
 """Upload module"""
 import logging
 import koldocta
-from eve.utils import config
 from koldocta.errors import KoldoctaApiError
 from werkzeug.wsgi import wrap_file
 from koldocta import Resource
@@ -61,7 +60,7 @@ def upload_url(media_id):
 
 def init_app(app):
     endpoint_name = 'upload'
-    service = UploadService(endpoint_name, backend=koldocta.get_backend())
+    service = UploadService(endpoint_name)
     UploadResource(endpoint_name, app=app, service=service)
 
 
@@ -111,28 +110,20 @@ class UploadService(BaseService):
             elif doc.get('URL'):
                 content, filename, content_type = self.download_file(doc)
 
-            self.crop_and_store_file(doc, content, filename, content_type)
+            self.store_file(doc, content, filename, content_type)
 
-    def crop_and_store_file(self, doc, content, filename, content_type):
+    def store_file(self, doc, content, filename, content_type):
         # retrieve file name and metadata from file
         file_name, content_type, metadata = process_file_from_stream(content, content_type=content_type)
-        # crop the file if needed, can change the image size
-        was_cropped, out = crop_image(content, filename, doc)
-        # the length in metadata could be updated if it was cropped
-        if was_cropped:
-            file_name, content_type, metadata_after_cropped = process_file_from_stream(out, content_type=content_type)
-            # when cropped, metadata are reseted. Then we update the previous metadata variable
-            metadata['length'] = metadata_after_cropped['length']
         try:
             logger.debug('Going to save media file with %s ' % file_name)
-            out.seek(0)
-            file_id = app.media.put(out, filename=file_name, content_type=content_type,
+            content.seek(0)
+            file_id = app.media.put(content, filename=file_name, content_type=content_type,
                                     resource=self.datasource, metadata=metadata)
             doc['media'] = file_id
             doc['mimetype'] = content_type
             doc['filemeta'] = decode_metadata(metadata)
             inserted = [doc['media']]
-            file_type = content_type.split('/')[0]
         except Exception as io:
             logger.exception(io)
             for file_id in inserted:

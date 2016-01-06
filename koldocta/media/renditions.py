@@ -9,7 +9,6 @@
 # at https://www.sourcefabric.org/koldocta/license
 
 from __future__ import absolute_import
-from PIL import Image
 import logging
 from flask import current_app as app
 
@@ -21,4 +20,3 @@ def delete_file_on_error(doc, file_id):
     if doc.get('_import', None):
         return
     app.media.delete(file_id)
-

@@ -14,7 +14,6 @@ Created on May 29, 2014
 @author: ioan
 """
 
-import redis
 import arrow
 import logging
 import werkzeug
@@ -37,7 +36,7 @@ def try_cast(v):
     try:
         str_to_date(v)  # try if it matches format
         return arrow.get(v).datetime  # return timezone aware time
-    except Exception as e:
+    except:
         try:
             return ObjectId(v)
         except:
@@ -125,8 +124,8 @@ def init_celery(app):
     celery.conf.update(app.config)
     app.celery = celery
 
-def update_key(key, flag=False, db=None):
 
+def update_key(key, flag=False, db=None):
     if db is None:
         db = app.redis
 

@@ -2,7 +2,6 @@ Eve
 Flask-PyMongo
 Flask-Script
 Jinja2
-Pillow
 arrow
 bcrypt
 celery

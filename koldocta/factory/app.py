@@ -17,11 +17,9 @@ import koldocta.factory.settings
 from eve.io.mongo import MongoJSONEncoder
 from eve.render import send_response
 from koldocta.celery_app import init_celery
-from eve.auth import TokenAuth
 from koldocta.storage.desk_media_storage import KoldoctaGridFSMediaStorage
 from raven.contrib.flask import Sentry
 from koldocta.errors import KoldoctaError, KoldoctaApiError
-import logging
 from logging.handlers import SysLogHandler
 
 sentry = Sentry(register_signal=False, wrap_wsgi=False)
@@ -53,7 +51,6 @@ def get_app(config=None, media_storage=None):
         media_storage = KoldoctaGridFSMediaStorage
 
     config.setdefault('DOMAIN', {})
-   
 
     app = eve.Eve(
         media=media_storage,

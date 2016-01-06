@@ -16,7 +16,7 @@ class GridFSMediaStorageTestCase(unittest.TestCase):
     def setUp(self):
         self.app = flask.Flask(__name__)
         self.app.config['SERVER_NAME'] = 'localhost'
-        self.app.data = Mongo(self.app)   
+        self.app.data = Mongo(self.app)
         self.app.config['DOMAIN'] = {'upload': {}}
         self.media = KoldoctaGridFSMediaStorage(self.app)
         self.app.register_blueprint(bp)

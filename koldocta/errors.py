@@ -76,7 +76,8 @@ class KoldoctaApiError(KoldoctaError):
         if payload:
             self.payload = payload
 
-        logger.error("HTTP Exception {} has been raised: {}".format(status_code, message))
+        logger.error("HTTP Exception {} has been raised: {}".format(
+            status_code, message))
 
     def to_dict(self):
         """Create dict for json response."""
@@ -92,27 +93,33 @@ class KoldoctaApiError(KoldoctaError):
 
     @classmethod
     def badRequestError(cls, message=None, payload=None):
-        return KoldoctaApiError(status_code=400, message=message, payload=payload)
+        return KoldoctaApiError(
+            status_code=400, message=message, payload=payload)
 
     @classmethod
     def unauthorizedError(cls, message=None, payload={'auth': 1}):
-        return KoldoctaApiError(status_code=401, message=message, payload=payload)
+        return KoldoctaApiError(
+            status_code=401, message=message, payload=payload)
 
     @classmethod
     def forbiddenError(cls, message=None, payload=None):
-        return KoldoctaApiError(status_code=403, message=message, payload=payload)
+        return KoldoctaApiError(
+            status_code=403, message=message, payload=payload)
 
     @classmethod
     def notFoundError(cls, message=None, payload=None):
-        return KoldoctaApiError(status_code=404, message=message, payload=payload)
+        return KoldoctaApiError(
+            status_code=404, message=message, payload=payload)
 
     @classmethod
     def preconditionFailedError(cls, message=None, payload=None):
-        return KoldoctaApiError(status_code=412, message=message, payload=payload)
+        return KoldoctaApiError(
+            status_code=412, message=message, payload=payload)
 
     @classmethod
     def internalError(cls, message=None, payload=None):
-        return KoldoctaApiError(status_code=500, message=message, payload=payload)
+        return KoldoctaApiError(
+            status_code=500, message=message, payload=payload)
 
 
 class IdentifierGenerationError(KoldoctaApiError):
@@ -127,14 +134,17 @@ class InvalidFileType(KoldoctaError):
     """Exception raised when receiving a file type that is not supported."""
 
     def __init__(self, type=None):
-        super(InvalidFileType, self).__init__('Invalid file type %s' % type, payload={})
+        super(InvalidFileType, self).__init__(
+            'Invalid file type %s' % type, payload={})
 
 
 class BulkIndexError(KoldoctaError):
     """Exception raised when bulk index operation fails.."""
 
     def __init__(self, resource=None, errors=None):
-        super(BulkIndexError, self).__init__('Failed to bulk index resource {} errors: {}'.format(resource, errors), payload={})
+        super(BulkIndexError, self).__init__(
+            'Failed to bulk index resource {} errors: {}'.format(
+                resource, errors), payload={})
 
 
 class PrivilegeNameError(Exception):
@@ -144,6 +154,6 @@ class PrivilegeNameError(Exception):
 class InvalidStateTransitionError(KoldoctaApiError):
     """Exception raised if workflow transition is invalid."""
 
-    def __init__(self, message='Workflow transition is invalid.', status_code=412):
+    def __init__(self, message='Workflow transition is invalid.',
+                 status_code=412):
         super(InvalidStateTransitionError, self).__init__(message, status_code)
-

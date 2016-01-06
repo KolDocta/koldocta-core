@@ -1,16 +1,16 @@
 Eve DynamoDB extension
 ========================
 
-.. image:: https://travis-ci.org/koldocta/koldocta-core.svg?branch=master
-   :target: https://travis-ci.org/koldocta/koldocta-core
+.. image:: https://travis-ci.org/KolDocta/koldocta-core.svg?branch=master
+   :target: https://travis-ci.org/KolDocta/koldocta-core
 
 
-.. image:: https://coveralls.io/repos/koldocta/koldocta-core/badge.svg?branch=master
-   :target: https://coveralls.io/r/koldocta/koldocta-core?branch=master
+.. image:: https://coveralls.io/repos/KolDocta/koldocta-core/badge.svg?branch=master
+   :target: https://coveralls.io/r/KolDocta/koldocta-core?branch=master
 
 
-.. image:: https://landscape.io/github/koldocta/koldocta-core/master/landscape.svg?style=flat
-   :target: https://landscape.io/github/koldocta0/koldocta-core/master
+.. image:: https://landscape.io/github/KolDocta/koldocta-core/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/KolDocta/koldocta-core/master
 
 
 

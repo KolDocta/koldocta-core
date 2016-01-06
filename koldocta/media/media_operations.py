@@ -16,7 +16,6 @@ import logging
 import requests
 from bson import ObjectId
 from io import BytesIO
-from PIL import Image
 from flask import json
 import base64
 from koldocta.errors import KoldoctaApiError
@@ -117,8 +116,10 @@ def process_video(content):
     content.seek(0)
     return meta
 
+
 def get_meta(content):
     pass
+
 
 def process_image(content):
     """
@@ -130,4 +131,3 @@ def process_image(content):
     meta = get_meta(content)
     content.seek(0)
     return meta
-

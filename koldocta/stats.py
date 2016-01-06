@@ -14,5 +14,6 @@ Using statsd client to push metrics via udp to statsd which can send it further.
 """
 from eve_statsd import StatsD
 
+
 def init_app(app):
     StatsD(app)

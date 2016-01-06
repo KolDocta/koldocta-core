@@ -9,7 +9,6 @@
 # at https://www.sourcefabric.org/koldocta/license
 
 import re
-import koldocta
 
 from bson import ObjectId
 from eve.io.mongo import Validator
