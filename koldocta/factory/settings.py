@@ -29,6 +29,7 @@ def env(variable, fallback_value=None):
             return env_value
 
 
+DATE_FORMAT = '%Y-%m-%dT%H:%M:%S+0000'
 BANDWIDTH_SAVER = False
 PAGINATION_LIMIT = 200
 

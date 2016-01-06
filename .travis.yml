@@ -6,11 +6,11 @@ env:
     - TARGET=unit
 
 python:
-    - "3.4"
+    - "2.6"
+    - "2.7"
 
 services:
     - mongodb
-    - elasticsearch
     - redis-server
 
 cache:
@@ -19,7 +19,7 @@ cache:
 
 install:
     - if [ "${TARGET}" = "unit" ] ; then
-        pip install -r requirements.txt && pip install coveralls==1.0a2;
+        pip install -r dev-requirements.txt && pip install coveralls==1.0a2;
       fi
 
 script:

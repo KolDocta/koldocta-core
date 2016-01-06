@@ -37,7 +37,7 @@ def try_cast(v):
     try:
         str_to_date(v)  # try if it matches format
         return arrow.get(v).datetime  # return timezone aware time
-    except:
+    except Exception as e:
         try:
             return ObjectId(v)
         except:
@@ -69,7 +69,7 @@ def loads(s):
             cast_item(v)
 
     kwargs = o['kwargs']
-    if isinstance(kwargs, str):
+    if isinstance(kwargs, (str, unicode)):
         o['kwargs'] = json.loads(kwargs)
         kwargs = o['kwargs']
     for k, v in kwargs.items():

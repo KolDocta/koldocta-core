@@ -3,8 +3,12 @@ import io
 import bson
 import flask
 import unittest
+
 from koldocta.upload import bp
 from koldocta.storage.desk_media_storage import KoldoctaGridFSMediaStorage
+from eve.io.mongo import Mongo
+
+from mock import Mock
 
 
 class GridFSMediaStorageTestCase(unittest.TestCase):
@@ -12,6 +16,7 @@ class GridFSMediaStorageTestCase(unittest.TestCase):
     def setUp(self):
         self.app = flask.Flask(__name__)
         self.app.config['SERVER_NAME'] = 'localhost'
+        self.app.data = Mongo(self.app)   
         self.app.config['DOMAIN'] = {'upload': {}}
         self.media = KoldoctaGridFSMediaStorage(self.app)
         self.app.register_blueprint(bp)
@@ -29,7 +34,7 @@ class GridFSMediaStorageTestCase(unittest.TestCase):
         self.assertEqual('http://localhost/upload/%s/raw' % _id, url)
 
     def test_put_media_with_id(self):
-        data = io.StringIO("test data")
+        data = io.StringIO(u"test data")
         filename = 'x'
 
         gridfs = Mock()

@@ -22,10 +22,10 @@ class AmazonMediaStorageTestCase(TestCase):
     def test_url_for_media(self):
         media_id = 'test'
         self.assertEqual(self.amazon.url_for_media(media_id),
-                         'https://AMAZON_CONTAINER_NAME.s3-us-east-1.amazonaws.com/%s' % (media_id))
+                         'https://AMAZON_CONTAINER_NAME.s3-us-west-1.amazonaws.com/%s' % (media_id))
         self.app.config['AMAZON_S3_USE_HTTPS'] = False
         self.assertEqual(self.amazon.url_for_media(media_id),
-                         'http://AMAZON_CONTAINER_NAME.s3-us-east-1.amazonaws.com/%s' % (media_id))
+                         'http://AMAZON_CONTAINER_NAME.s3-us-west-1.amazonaws.com/%s' % (media_id))
         self.app.config['AMAZON_REGION'] = 'eu-west-1'
         self.assertEqual(self.amazon.url_for_media(media_id),
                          'http://AMAZON_CONTAINER_NAME.s3-eu-west-1.amazonaws.com/%s' % (media_id))

@@ -76,10 +76,9 @@ class KoldoctaGridFSMediaStorage(GridFSMediaStorage):
 
     def fs(self, resource):
         resource = resource or 'upload'
-        driver = self.app.data.mongo
-        px = driver.current_mongo_prefix(resource)
+        px = self.app.data.current_mongo_prefix(resource)
         if px not in self._fs:
-            self._fs[px] = gridfs.GridFS(driver.pymongo(prefix=px).db)
+            self._fs[px] = gridfs.GridFS(self.app.data.pymongo(prefix=px).db)
         return self._fs[px]
 
     def remove_unreferenced_files(self, existing_files):
