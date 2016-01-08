@@ -20,15 +20,14 @@ from koldocta.celery_app import init_celery
 from koldocta.storage.desk_media_storage import KoldoctaGridFSMediaStorage
 from raven.contrib.flask import Sentry
 from koldocta.errors import KoldoctaError, KoldoctaApiError
-from logging.handlers import SysLogHandler
-
-sentry = Sentry(register_signal=False, wrap_wsgi=False)
 
 
-def configure_logging(app, config):
-    sys_handler = SysLogHandler(
-        address=(config['LOG_SERVER_ADDRESS'], config['LOG_SERVER_PORT']))
-    app.logger.addHandler(sys_handler)
+def configure_logging(app):
+    if app.config['DEBUG'] or app.debug:
+        return
+    app.sentry = Sentry(app, dsn=app.config['SENTRY_DSN'],
+           register_signal=True, wrap_wsgi=True, logging=True,
+           level=app.config['SENTRY_ERROR_LEVEL'])
 
 
 def get_app(config=None, media_storage=None):
@@ -57,7 +56,7 @@ def get_app(config=None, media_storage=None):
         settings=config,
         json_encoder=MongoJSONEncoder,
     )
-    configure_logging(app, config)
+    configure_logging(app)
     koldocta.app = app
 
     custom_loader = jinja2.ChoiceLoader([
@@ -78,8 +77,8 @@ def get_app(config=None, media_storage=None):
     @app.errorhandler(500)
     def server_error_handler(error):
         """Log server errors."""
-        app.sentry.captureException()
-        app.logger.exception(error)
+#         app.sentry.captureException()
+#         app.logger.exception(error)
         return_error = KoldoctaApiError.internalError()
         return client_error_handler(return_error)
 
@@ -102,7 +101,7 @@ def get_app(config=None, media_storage=None):
     for name, jinja_filter in koldocta.JINJA_FILTERS.items():
         app.jinja_env.filters[name] = jinja_filter
 
-    app.sentry = sentry
-    sentry.init_app(app)
+#     app.sentry = sentry
+#     sentry.init_app(app)
 
     return app

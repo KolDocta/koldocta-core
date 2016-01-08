@@ -52,20 +52,6 @@ class Command(BaseCommand):
             return 1
 
 
-def get_headers(self, environ=None):
-    """Fix CORS for abort responses.
-
-    todo(petr): put in in custom flask error handler instead
-    """
-    return [
-        ('Content-Type', 'text/html'),
-        ('Access-Control-Allow-Origin', '*'),
-        ('Access-Control-Allow-Headers', '*'),
-    ]
-
-setattr(HTTPException, 'get_headers', get_headers)
-
-
 def domain(resource, res_config):
     """Register domain resource"""
     DOMAIN[resource] = res_config

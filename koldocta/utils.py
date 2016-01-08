@@ -19,7 +19,12 @@ from importlib import import_module
 from eve.utils import config
 
 
-required_string = {'type': 'string', 'required': True, 'nullable': False, 'empty': False}
+required_string = {
+    'type': 'string',
+    'required': True,
+    'nullable': False,
+    'empty': False
+}
 
 
 class FileSortAttributes(Enum):
@@ -79,7 +84,8 @@ def get_hash(input_str, salt):
     return hashed.decode('UTF-8')
 
 
-def get_sorted_files(path, sort_by=FileSortAttributes.name, sort_order=SortOrder.asc):
+def get_sorted_files(path, sort_by=FileSortAttributes.name,
+                     sort_order=SortOrder.asc):
     """
     Get the list of files based on the sort order.
     Sort is allowed on name, created and modified datetime

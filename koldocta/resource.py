@@ -7,30 +7,10 @@
 # For the full copyright and license information, please see the
 # AUTHORS and LICENSE files distributed with this source code, or
 # at https://www.sourcefabric.org/koldocta/license
-
-
-import logging
 import koldocta
-from eve.utils import config
 
-
-log = logging.getLogger(__name__)
 
 _METHODS = ['GET', 'HEAD', 'POST', 'PATCH', 'PUT', 'DELETE']
-
-
-def build_custom_hateoas(hateoas, doc, **values):
-    values.update(doc)
-    links = doc.get(config.LINKS)
-    if not links:
-        links = {}
-        doc[config.LINKS] = links
-
-    for link_name in hateoas.keys():
-        link = hateoas[link_name]
-        link = {'title': link['title'], 'href': link['href']}
-        link['href'] = link['href'].format(**values)
-        links[link_name] = link
 
 
 class Resource():
@@ -153,37 +133,61 @@ class Resource():
         }
 
     def pre_GET(self, resource, request, lookup):
+        if not resource:
+            return
         pass
 
     def pre_HEAD(self, resource, request, lookup):
+        if not resource:
+            return
         pass
 
     def pre_POST(self, resource, request):
+        if not resource:
+            return
         pass
 
     def pre_PATCH(self, resource, request, lookup):
+        if not resource:
+            return
         pass
 
     def pre_PUT(self, resource, request, lookup):
+        if not resource:
+            return
         pass
 
     def pre_DELETE(self, resource, request, lookup):
+        if not resource:
+            return
         pass
 
     def post_GET(self, resource, request, payload):
+        if not resource:
+            return
         pass
 
     def post_HEAD(self, resource, request, payload):
+        if not resource:
+            return
         pass
 
     def post_POST(self, resource, request, payload):
+        if not resource:
+            return
         pass
 
     def post_PATCH(self, resource, request, payload):
+        if not resource:
+            return
         pass
 
     def post_PUT(self, resource, request, payload):
+        if not resource:
+            return
         pass
 
     def post_DELETE(self, resource, request, payload):
+        if not resource:
+            return
         pass

@@ -14,7 +14,7 @@ Created on May 29, 2014
 @author: ioan
 """
 
-import arrow
+from datetime import datetime
 import logging
 import werkzeug
 import koldocta
@@ -22,7 +22,6 @@ from bson import ObjectId
 from celery import Celery
 from kombu.serialization import register
 from eve.io.mongo import MongoJSONEncoder
-from eve.utils import str_to_date
 from flask import json, current_app as app
 from koldocta.errors import KoldoctaError
 
@@ -34,14 +33,19 @@ TaskBase = celery.Task
 
 def try_cast(v):
     try:
-        str_to_date(v)  # try if it matches format
-        return arrow.get(v).datetime  # return timezone aware time
+        return datetime.strptime(v, app.config['DATE_FORMAT'])
     except:
         try:
-            return ObjectId(v)
+            try:
+                r = ObjectId(unicode(v))
+            except NameError:
+                # We're on Python 3 so it's all unicode # already.
+                r = ObjectId(v)
+            return r
         except:
             return v
-
+        else:
+            return v
 
 def cast_item(o):
     with koldocta.app.app_context():
@@ -126,9 +130,6 @@ def init_celery(app):
 
 
 def update_key(key, flag=False, db=None):
-    if db is None:
-        db = app.redis
-
     if flag:
         crt_value = db.incr(key)
     else:
@@ -138,5 +139,4 @@ def update_key(key, flag=False, db=None):
         crt_value = int(crt_value)
     else:
         crt_value = 0
-
     return crt_value

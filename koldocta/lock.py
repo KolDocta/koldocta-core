@@ -3,7 +3,6 @@ import mongolock
 
 from werkzeug.local import LocalProxy
 from flask import current_app as app
-from koldocta.logging import logger
 
 
 def _get_lock():
@@ -24,9 +23,9 @@ def lock(task, host, expire=300, timeout=None):
     """
     got_lock = _lock.lock(task, host, expire=expire, timeout=timeout)
     if got_lock:
-        logger.info('got lock task=%s host=%s' % (task, host))
+        app.logger.info('got lock task=%s host=%s' % (task, host))
     else:
-        logger.info('task locked already task=%s host=%s' % (task, host))
+        app.logger.info('task locked already task=%s host=%s' % (task, host))
     return got_lock
 
 
@@ -38,5 +37,5 @@ def unlock(task, host):
     :param task: task name
     :param host: current host id
     """
-    logger.info('releasing lock task=%s host=%s' % (task, host))
+    app.logger.info('releasing lock task=%s host=%s' % (task, host))
     return _lock.release(task, host)

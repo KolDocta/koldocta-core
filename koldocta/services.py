@@ -8,10 +8,6 @@
 # AUTHORS and LICENSE files distributed with this source code, or
 # at https://www.sourcefabric.org/koldocta/license
 
-import logging
-
-_logger = logging.getLogger(__name__)
-
 
 class BaseService():
     '''
