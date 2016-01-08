@@ -132,62 +132,74 @@ class Resource():
             'data_relation': {'resource': resource, 'field': '_id', 'embeddable': embeddable}
         }
 
-    def pre_GET(self, resource, request, lookup):
+    @staticmethod
+    def pre_GET(resource, request, lookup):
         if not resource:
             return
         pass
 
-    def pre_HEAD(self, resource, request, lookup):
+    @staticmethod
+    def pre_HEAD(resource, request, lookup):
         if not resource:
             return
         pass
 
-    def pre_POST(self, resource, request):
+    @staticmethod
+    def pre_POST(resource, request):
         if not resource:
             return
         pass
 
-    def pre_PATCH(self, resource, request, lookup):
+    @staticmethod
+    def pre_PATCH(resource, request, lookup):
         if not resource:
             return
         pass
 
-    def pre_PUT(self, resource, request, lookup):
+    @staticmethod
+    def pre_PUT(resource, request, lookup):
         if not resource:
             return
         pass
 
-    def pre_DELETE(self, resource, request, lookup):
+    @staticmethod
+    def pre_DELETE(resource, request, lookup):
         if not resource:
             return
         pass
 
-    def post_GET(self, resource, request, payload):
+    @staticmethod
+    def post_GET(resource, request, payload):
         if not resource:
             return
         pass
 
-    def post_HEAD(self, resource, request, payload):
+    @staticmethod
+    def post_HEAD(resource, request, payload):
         if not resource:
             return
         pass
 
-    def post_POST(self, resource, request, payload):
+    @staticmethod
+    def post_POST(resource, request, payload):
+        if not resource:
+            return
+        pass
+    
+    @staticmethod
+    def post_PATCH(resource, request, payload):
         if not resource:
             return
         pass
 
-    def post_PATCH(self, resource, request, payload):
+    @staticmethod
+    def post_PUT(resource, request, payload):
         if not resource:
             return
         pass
 
-    def post_PUT(self, resource, request, payload):
-        if not resource:
-            return
-        pass
-
-    def post_DELETE(self, resource, request, payload):
+    @staticmethod
+    def post_DELETE(resource, request, payload):
         if not resource:
             return
         pass
