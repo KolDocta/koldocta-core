@@ -20,6 +20,7 @@ from koldocta.celery_app import init_celery
 from koldocta.storage.desk_media_storage import KoldoctaGridFSMediaStorage
 from raven.contrib.flask import Sentry
 from koldocta.errors import KoldoctaError, KoldoctaApiError
+from koldocta.validator import KoldoctaValidator
 
 
 def configure_logging(app):
@@ -55,6 +56,7 @@ def get_app(config=None, media_storage=None):
         media=media_storage,
         settings=config,
         json_encoder=MongoJSONEncoder,
+        validator=KoldoctaValidator
     )
     configure_logging(app)
     koldocta.app = app
