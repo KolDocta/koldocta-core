@@ -133,73 +133,49 @@ class Resource():
         }
 
     @staticmethod
-    def pre_GET(resource, request, lookup):
-        if not resource:
-            return
+    def pre_GET(request, lookup):
         pass
 
     @staticmethod
-    def pre_HEAD(resource, request, lookup):
-        if not resource:
-            return
+    def pre_HEAD(request, lookup):
         pass
 
     @staticmethod
-    def pre_POST(resource, request):
-        if not resource:
-            return
+    def pre_POST(request):
         pass
 
     @staticmethod
-    def pre_PATCH(resource, request, lookup):
-        if not resource:
-            return
+    def pre_PATCH(request, lookup):
         pass
 
     @staticmethod
-    def pre_PUT(resource, request, lookup):
-        if not resource:
-            return
+    def pre_PUT(request, lookup):
         pass
 
     @staticmethod
-    def pre_DELETE(resource, request, lookup):
-        if not resource:
-            return
+    def pre_DELETE(request, lookup):
         pass
 
     @staticmethod
-    def post_GET(resource, request, payload):
-        if not resource:
-            return
+    def post_GET(request, payload):
         pass
 
     @staticmethod
-    def post_HEAD(resource, request, payload):
-        if not resource:
-            return
+    def post_HEAD(request, payload):
         pass
 
     @staticmethod
-    def post_POST(resource, request, payload):
-        if not resource:
-            return
+    def post_POST(request, payload):
         pass
     
     @staticmethod
-    def post_PATCH(resource, request, payload):
-        if not resource:
-            return
+    def post_PATCH(request, payload):
         pass
 
     @staticmethod
-    def post_PUT(resource, request, payload):
-        if not resource:
-            return
+    def post_PUT(request, payload):
         pass
 
     @staticmethod
-    def post_DELETE(resource, request, payload):
-        if not resource:
-            return
+    def post_DELETE(request, payload):
         pass
